@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MCDM Calculator</title>
+    <link href="https://fonts.googleapis.com/css?family=Jomolhari&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <form action="" method="post">
+        <section id="combos-select">
+        </section>
+        <section id="extras-select">
+        </section>
+        <section id="miniatures-select">
+        </section>
+    </form>
+</body>
+<script>
+
+const otheers = [
+    {name: 'PDF', cost: 25}, // 0
+    {name: 'Hardcover', cost: 15}, // 1
+    {name: 'Sticker'}, // 2
+    {name: 'Limited Hardcover', cost: 55}, // 3
+    {name: 'Signed Limited Hardcover', cost: 110}, // 4
+    {name: 'Shirt', cost: 15} // 5
+]
+
+const extras = [
+    {name: 'Screen', cost: 20},
+    {name: 'Cartas', cost: 20}
+];
+const miniat = [
+    {name: 'Limited Dragon', cost: 130 },
+    {name: 'Pharyon', cost: 65 },
+    {name: 'Tristan', cost: 15 },
+    {name: 'Sylt', cost: 45 },
+    {name: 'Rakat', cost: 45 },
+    {name: 'Zaar', cost: 40 },
+    {name: 'Haraantar', cost: 15 },
+    {name: 'Khorak', cost: 70 },
+    {name: 'vorgaut', cost: 15 },
+    {name: 'Sryz', cost: 40 },
+    {name: 'Maelodor', cost: 55 },
+    {name: 'Zoryal', cost: 45 },
+    {name: 'Indix', cost: 15 },
+    {name: 'Groyle', cost: 70 },
+    {name: 'Telcezalco', cost: 35 },
+    {name: 'Moranon', cost: 45 }
+];
+const combos = [
+    {name:'Combo 1', things: [otheers[0]], cost: 25},
+    {name:'Combo 2', things: [otheers[0],otheers[1],otheers[2]], cost: 40},
+    {name:'Combo 3', things: [otheers[0],otheers[1],otheers[2],otheers[5]], cost: 65},
+    {name:'Combo 4', things: [otheers[0],otheers[3],otheers[2]], cost: 80},
+    {name:'Combo 5', things: [otheers[0],otheers[3],otheers[2],otheers[5]], cost: 105},
+    {name:'Combo 6', things: [otheers[0],otheers[1],otheers[2],otheers[5],miniat[0]], cost: 195},
+    {name:'Combo 7', things: [otheers[0],otheers[4],otheers[2],otheers[5],miniat[0]], cost: 280},
+    {name:'Combo 8', things: [otheers[0],otheers[4],otheers[2],otheers[5],...miniat, ...extras], cost: 1000},
+];
+
+
+
+window.onload = () => {
+    const comboSel = document.getElementById("combos-select");
+    const extraSel = document.getElementById("extras-select");
+    const minisSel = document.getElementById("miniatures-select");
+
+    const makeCombo = () => {
+        let title = document.createElement('h2');
+        title.innerHTML = 'Combos';
+        comboSel.appendChild(title)
+        combos.forEach((combo) => {
+            let article = document.createElement('article');
+            let title = document.createElement('h4');
+            title.innerHTML = combo.name;
+            let cost = document.createElement('h3');
+            let comoboCost = document.createElement('h3');
+            let leCost = 0
+            cost.classList.add('costo');
+            cost.innerHTML = combo.cost;
+            let lista = document.createElement('ul');
+            combo.things.forEach((thing) => {
+                let list = document.createElement('li');
+                list.innerHTML = thing.name;
+                if(thing.cost) {
+                    let costo = document.createElement('span');
+                    costo.classList.add('grisado');
+                    costo.innerHTML = thing.cost;
+                    list.innerHTML += ' ';
+                    list.appendChild(costo)
+                    leCost += thing.cost;
+                }
+                lista.appendChild(list);
+            });
+            article.appendChild(title);
+            article.appendChild(cost);
+            comoboCost.innerHTML = leCost;
+            article.appendChild(comoboCost);
+            article.appendChild(lista);
+            //
+            comboSel.appendChild(article);
+        });
+    }
+
+    makeCombo();
+}
+</script>
+</html>

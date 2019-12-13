@@ -1,0 +1,51 @@
+body {
+    font-family: 'Jomolhari', serif;
+    margin: 0;
+    padding: 0;
+}
+.costo {
+    font-weight: bold;
+    color: red;
+}
+
+.grisado {
+    color: gray;
+    font-size: 10px;
+}
+section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+h2 {
+    width: 100%;
+    background-color: lightcoral;
+    padding: 24px;
+    text-transform: uppercase;
+}
+article {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: lightcoral 2px solid;
+    width: 33%;
+}
+article h4 {
+    width: 100%;
+    text-align: center;
+}
+article h3 {
+    padding: 0 12px;
+
+}
+article ul {
+    width: 100%;
+    padding: 0 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+}
+article li {
+    padding: 0 8px;
+}
